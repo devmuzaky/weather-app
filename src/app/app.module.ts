@@ -9,11 +9,17 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {environment} from "../environments/environment";
+import { HeaderComponent } from './header/header.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherComponent
+    WeatherComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -22,8 +28,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatToolbarModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
+      enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
